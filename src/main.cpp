@@ -2,14 +2,7 @@
 #include <driver/adc.h> //  ADC configuration
 #include <array>
 
-// DHT Sensor (temperature, humidity)
-#include <Adafruit_Sensor.h>
-#include <DHT.h>
-#include <DHT_U.h>
-
-// DHT Sensor (temperature, humidity)
-#define DHTPIN 19     // Digital pin connected to the DHT sensor
-#define DHTTYPE DHT22 // DHT22 (AM2302)
+#include "dht_sensor.h"
 
 // https://senseair.com/products/size-counts/s8-lp/ Product No. 004-0-0053
 // Senseair Sensor UART pins
@@ -22,13 +15,10 @@
 #define DSCL 15
 #define DRST 16
 
-// Initialize DHT sensor.
-DHT dht(DHTPIN, DHTTYPE);
-
 void setup()
 {
   Serial.begin(115200);
-  dht.begin();
+  dht_sensor::setup();
 }
 
 unsigned long nextTime = millis();
@@ -36,10 +26,6 @@ void loop()
 {
   delay(2000);
 
-  float temperature = dht.readTemperature();
-  float humidity = dht.readHumidity();
-  float heatIndex = dht.computeHeatIndex(temperature, humidity, false);
-
-  Serial.printf("Temp: %f °C, Humidity: %f %%, HeatIndex: %f °C", temperature, humidity, heatIndex);
-  Serial.println();
+  dht_sensor::Data data = dht_sensor::getData();
+  dht_sensor::serialPrint(data);
 }
