@@ -43,7 +43,7 @@ namespace dht_sensor
 
     void serialPrint(Data &d)
     {
-        Serial.printf("Temp: %f °C , Humidity: %f %%, HeatIndex: %f °C", d.temperature, d.humidity, d.heatIndex);
+        Serial.printf("Temp: %.1f °C , Humidity: %.1f %%, HeatIndex: %.1f °C", d.temperature, d.humidity, d.heatIndex);
         Serial.println();
     }
 
