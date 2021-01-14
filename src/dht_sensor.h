@@ -1,11 +1,13 @@
 #pragma once
 
-// DHT Sensor (temperature, humidity)
+/**
+ *  DHT Sensor (temperature, humidity)
+ */
+
 #include <Adafruit_Sensor.h>
 #include <DHT.h>
 #include <DHT_U.h>
 
-// DHT Sensor (temperature, humidity)
 #define DHTPIN 19     // Digital pin connected to the DHT sensor
 #define DHTTYPE DHT22 // DHT22 (AM2302)
 
