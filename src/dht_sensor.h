@@ -8,8 +8,12 @@
 #include <DHT.h>
 #include <DHT_U.h>
 
+#include <iomanip>
+#include <string>
+#include <sstream>
+
 #define DHTPIN 19     // Digital pin connected to the DHT sensor
-#define DHTTYPE DHT22 // DHT22 (AM2302)
+#define DHTTYPE DHT22 // DHT22 (ASAIR AM2302)
 
 namespace dht_sensor
 {
@@ -43,10 +47,9 @@ namespace dht_sensor
         return Data(temperature, humidity, heatIndex);
     }
 
-    void serialPrint(Data &d)
+    void printSerial(Data &d)
     {
         Serial.printf("Temp: %.1f °C , Humidity: %.1f %%, HeatIndex: %.1f °C", d.temperature, d.humidity, d.heatIndex);
-        Serial.println();
     }
 
 } // namespace dht_sensor
