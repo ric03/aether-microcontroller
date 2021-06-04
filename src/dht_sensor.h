@@ -1,9 +1,5 @@
 #pragma once
 
-/**
- *  DHT Sensor (temperature, humidity)
- */
-
 #include <Adafruit_Sensor.h>
 #include <DHT.h>
 #include <DHT_U.h>
@@ -15,6 +11,14 @@
 #define DHTPIN 19     // Digital pin connected to the DHT sensor
 #define DHTTYPE DHT22 // DHT22 (ASAIR AM2302)
 
+/**
+ * DHT Sensor (temperature, humidity)
+ * DHT22 (ASAIR AM2302)
+ * 
+ * This sensor reads the temperature and humidity:
+ * - Humidity: Good for 0-100% humidity readings with 2-5% accuracy.
+ * - Temperature: Good for -40 to 80°C temperature readings with ±0.5°C accuracy.
+ */
 namespace dht_sensor
 {
     // Initialize DHT sensor.
