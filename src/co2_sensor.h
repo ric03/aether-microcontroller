@@ -32,6 +32,7 @@ namespace co2_sensor
     uint32_t readCo2()
     {
         int timeout = 10;
+
         while (isSerialEmptyOrUnavailable())
         {
             timeout--;
@@ -44,7 +45,7 @@ namespace co2_sensor
             delay(50);
         }
 
-        int timeout = 10;
+        timeout = 10;
         while (getMessageCount() < 7)
         {
             timeout--;
