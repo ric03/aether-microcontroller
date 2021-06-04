@@ -5,6 +5,7 @@
 #include "co2_sensor.h"
 #include "dht_sensor.h"
 #include "oled_display.h"
+#include "mqtt.h"
 
 #define DEGREE_SYMBOL 248
 
@@ -16,6 +17,7 @@ void setup()
   co2_sensor::setup();
   dht_sensor::setup();
   display::setup();
+  mqtt::setup();
 }
 
 void loop()
