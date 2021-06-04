@@ -26,11 +26,11 @@ namespace dht_sensor
 
     struct Data
     {
-        Data(float t, float h, float hi)
+        Data(float temperature, float humidity, float heatIndex)
         {
-            temperature = t;
-            humidity = h;
-            heatIndex = hi;
+            this->temperature = temperature;
+            this->humidity = humidity;
+            this->heatIndex = heatIndex;
         }
         float temperature;
         float humidity;
