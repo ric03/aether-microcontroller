@@ -6,11 +6,6 @@
 #include "dht_sensor.h"
 #include "oled_display.h"
 
-// https://senseair.com/products/size-counts/s8-lp/ Product No. 004-0-0053
-// Senseair Sensor UART pins
-#define RXD2 13
-#define TXD2 12
-
 #define DEGREE_SYMBOL 248
 
 void setup()
