@@ -13,6 +13,9 @@ This project measures the air quality with a microcontroller, the data is sent v
 
 To get started run the setup script, it will create and configure the files to run the applications.
 
+For MacOS please install GNU sed  
+`$ brew install gnu-sed`
+
 `$ cd container && ./setup.sh`
 
 ## Run the microcontroller

@@ -9,18 +9,27 @@ MOSQITTO_PASSWD_ENCRYPTED=config/mosquitto.passwd
 echo "Copying required templates..."
 cp config.env.template              config.env
 cp config/mosquitto.passwd.template $MOSQUITTO_PASSWD_UNENCRYPTED
-echo 'created: config.env'
-echo "created: $MOSQUITTO_PASSWD_UNENCRYPTED"
+echo '+ created: config.env'
+echo "+ created: $MOSQUITTO_PASSWD_UNENCRYPTED"
 
 echo "Please provide passwords for the Mosquitto users..."
-read -sp "Sensor password: " sensor-password
-read -sp "Telegraf password: " telegraf-password
+read -sp "Sensor password: " sensorPassword
+echo
+read -sp "Telegraf password: " telegrafPassword
+echo
 
 echo "Configuring mosquitto passwords..."
-sed 's/sensor-password/${sensor-password}' $MOSQUITTO_PASSWD_UNENCRYPTED
-sed 's/telegraf-password/${telegraf-password}' $MOSQUITTO_PASSWD_UNENCRYPTED
-echo "Wrote raw passwords into $MOSQUITTO_PASSWD_UNENCRYPTED"
 
+if [ $(uname) = Darwin ]
+then 
+    SED=gsed
+else 
+    SED=sed
+fi
+
+$SED -i "s/sensorPassword/$sensorPassword/" $MOSQUITTO_PASSWD_UNENCRYPTED
+$SED -i "s/telegrafPassword/$telegrafPassword/" $MOSQUITTO_PASSWD_UNENCRYPTED
+echo "Wrote raw passwords into $MOSQUITTO_PASSWD_UNENCRYPTED"
 
 trap "docker rm --force $CONTAINER_NAME" SIGHUP SIGINT SIGQUIT SIGABRT SIGKILL SIGTERM
 
