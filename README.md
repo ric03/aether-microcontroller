@@ -11,7 +11,7 @@ This project measures the air quality with a microcontroller, the data is sent v
 
 # Getting Started
 
-To get started run the setup script, it will create and configure the files to run the applications.
+To get started run the setup script, it will create and configure the files to run the containers.
 
 For MacOS please install GNU sed  
 `$ brew install gnu-sed`
@@ -20,8 +20,9 @@ For MacOS please install GNU sed
 
 ## Run the microcontroller
 
-1. Set the correct variables in `src/mqtt_config.h`
-2. Compile and upload the code onto the microcontroller via the PlatformIO extension
+1. `cp src/mqtt_config.template.h src/mqtt_config.h`
+2. Set the correct variables in `src/mqtt_config.h`
+3. Compile and upload the code onto the microcontroller via the PlatformIO extension
 
 ## Run the container enviroment
 
@@ -69,7 +70,7 @@ Reference: https://mosquitto.org/man/mosquitto_passwd-1.html
 
 ## Raspberry Pi
 
-- Securing the Raspberry Pi: https://www.raspberrypi.org/documentation/configuration/security.md
+- Securing the Raspberry Pi: https://www.raspberrypi.org/documentation/computers/configuration.html#securing-your-raspberry-pi
 - Install Docker (armhf): https://docs.docker.com/engine/install/debian/
 
 ## Resources
