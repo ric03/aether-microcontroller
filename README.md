@@ -73,6 +73,7 @@ Reference: https://mosquitto.org/man/mosquitto_passwd-1.html
 
 - Securing the Raspberry Pi: https://www.raspberrypi.org/documentation/computers/configuration.html#securing-your-raspberry-pi
 - Install Docker (armhf): https://docs.docker.com/engine/install/debian/
+   restart is required `shutdown -r 0`
 - To use docker without sudo execute the following steps:
    ```sh
    # Add the group 'docker' and add the user
@@ -80,6 +81,13 @@ Reference: https://mosquitto.org/man/mosquitto_passwd-1.html
    $ sudo usermod -aG docker $USER
    # List the groups (reconnect required)
    $ groups
+   ```
+- Install docker-compose:
+   ```sh
+   sudo apt-get install libffi-dev libssl-dev
+   sudo apt install python3-dev
+   sudo apt-get install -y python3 python3-pip
+   sudo pip3 install docker-compose
    ```
 
 ## Resources
