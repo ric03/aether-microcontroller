@@ -1,7 +1,11 @@
 #!/bin/bash
 set -e
 
-MOSQUITTO_IMAGE_NAME=eclipse-mosquitto:2.0.10
+echo 'Container config setup'
+echo '---------------------'
+cd container/
+
+MOSQUITTO_IMAGE_NAME=eclipse-mosquitto:2.0.12
 CONTAINER_NAME=moquitto-setup-cli
 MOSQUITTO_PASSWD_UNENCRYPTED=config/mosquitto.passwd.raw
 MOSQITTO_PASSWD_ENCRYPTED=config/mosquitto.passwd

@@ -13,10 +13,11 @@ This project measures the air quality with a microcontroller, the data is sent v
 
 To get started run the setup script, it will create and configure the files to run the containers.
 
+`$ ./scripts/setup.sh`
+
 For MacOS please install GNU sed  
 `$ brew install gnu-sed`
 
-`$ cd container && ./setup.sh`
 
 ## Run the microcontroller
 
@@ -26,8 +27,8 @@ For MacOS please install GNU sed
 
 ## Run the container enviroment
 
-To start the containers run `./container/start.sh`  
-To stop the containers run `./container/stop.sh`
+To start the containers run `./scripts/start.sh`  
+To stop the containers run `./scripts/stop.sh`
 
 After starting you need to create two Access-Tokens:
 
