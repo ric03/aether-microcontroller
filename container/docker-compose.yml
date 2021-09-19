@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   mosquitto:
-    image: eclipse-mosquitto:2.0.10
+    image: eclipse-mosquitto:2.0.12
     container_name: mosquitto
     ports:
       - 8883:8883
@@ -13,7 +13,7 @@ services:
       - mosquitto
 
   telegraf:
-    image: telegraf:1.8.3
+    image: telegraf:1.19.3
     container_name: telegraf
     env_file:
       - config.env
@@ -24,7 +24,7 @@ services:
       - $PWD/config/telegraf.conf:/etc/telegraf/telegraf.conf:ro
 
   influxdb:
-    image: influxdb:2.0.6
+    image: influxdb:2.0.8
     container_name: influxdb
     ports:
       - 8086:8086
@@ -36,7 +36,7 @@ services:
       - influxdb-data:/var/lib/influxdb2
 
   grafana:
-    image: grafana/grafana:7.5.7
+    image: grafana/grafana:8.1.4
     container_name: grafana
     env_file:
       - config.env
