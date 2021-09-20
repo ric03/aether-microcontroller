@@ -15,4 +15,4 @@ then
     REMOVE_VOLUMES=--volumes
 fi
 
-docker compose --project-name $PROJECT_NAME down $REMOVE_VOLUMES
+docker-compose --project-name $PROJECT_NAME down $REMOVE_VOLUMES
