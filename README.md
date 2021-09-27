@@ -15,9 +15,6 @@ To get started run the setup script, it will create and configure the files to r
 
 `$ ./scripts/setup.sh`
 
-For MacOS please install GNU sed  
-`$ brew install gnu-sed`
-
 
 ## Run the microcontroller
 
@@ -29,20 +26,6 @@ For MacOS please install GNU sed
 
 To start the containers run `./scripts/start.sh`  
 To stop the containers run `./scripts/stop.sh`
-
-After starting you need to create two Access-Tokens:
-
-1. Open the InfluxDB-UI (http://localhost:8086)
-2. Go to Data > Tokens
-3. Generate a Write-Token for Telegraf
-4. Generate a Read-Token for Grafana
-5. Copy and save each token in `container/config.env` (see table below)
-6. Restart the containers `./container/start.sh`
-
-| #   | env-variable                | application | permission |
-| --- | --------------------------- | ----------- | ---------- |
-| 1   | INFLUXDB_ACCESS_TOKEN_WRITE | Telegraf    | write      |
-| 2   | INFLUXDB_ACCESS_TOKEN_READ  | Grafana     | read       |
 
 ## Configure InfluxDB
 

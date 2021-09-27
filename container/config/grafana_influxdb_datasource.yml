@@ -7,7 +7,7 @@ datasources:
     url: http://influxdb:8086
     user: $INFLUXDB_USERNAME
     secureJsonData:
-      token: $INFLUXDB_ACCESS_TOKEN_READ
+      token: $INFLUXDB_ACCESS_TOKEN
     jsonData:
       version: Flux
       organization: home
