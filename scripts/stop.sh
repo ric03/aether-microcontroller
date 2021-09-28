@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+cd container/
 
 PROJECT_NAME=aether
 
