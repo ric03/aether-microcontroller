@@ -32,7 +32,7 @@ namespace display
         display.display();
     }
 
-    void test()
+    void show_sample_images()
     {
         println("It works :D");
         delay(2000);
