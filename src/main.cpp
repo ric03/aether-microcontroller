@@ -35,6 +35,12 @@ void loop()
                 co2);
 #endif
 
+#if ENABLE_MQTT == true
+  mqtt::mqttClient.publish("sensors/home/livingroom/temperature", 0, true, String(dht_data.temperature, 1).c_str());
+  mqtt::mqttClient.publish("sensors/home/livingroom/humidity", 0, true, String(dht_data.humidity, 1).c_str());
+  mqtt::mqttClient.publish("sensors/home/livingroom/co2", 0, true, String(co2).c_str());
+#endif
+
 #if ENABLE_DISPLAY == true
   display::display.clearDisplay();
   display::display.setCursor(0, 0);
