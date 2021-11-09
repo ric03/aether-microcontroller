@@ -36,9 +36,9 @@ void loop()
 #endif
 
 #if ENABLE_MQTT == true
-  mqtt::mqttClient.publish("sensors/home/livingroom/temperature", 0, true, String(dht_data.temperature, 1).c_str());
-  mqtt::mqttClient.publish("sensors/home/livingroom/humidity", 0, true, String(dht_data.humidity, 1).c_str());
-  mqtt::mqttClient.publish("sensors/home/livingroom/co2", 0, true, String(co2).c_str());
+  mqtt::publishTemperature("sensors/home/livingroom/temperature", dht_data.temperature);
+  mqtt::publishTemperature("sensors/home/livingroom/humidity", dht_data.humidity);
+  mqtt::publishTemperature("sensors/home/livingroom/co2", co2);
 #endif
 
 #if ENABLE_DISPLAY == true
