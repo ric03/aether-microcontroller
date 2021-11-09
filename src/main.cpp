@@ -18,6 +18,10 @@ void setup()
   dht_sensor::setup();
   display::setup();
   mqtt::setup();
+
+#if ENABLE_SERIAL_LOGGING == true
+  Serial.printf("T=Temperature, R=relative Humidity, HI=HeatIndex, CO2=Carbon Dioxide");
+#endif
 }
 
 void loop()
@@ -28,7 +32,7 @@ void loop()
   uint32_t co2 = co2_sensor::readCo2();
 
 #if ENABLE_SERIAL_LOGGING == true
-  Serial.printf("Temp: %.1f °C, Humidity: %.1f %%, HeatIndex: %.1f °C -- CO2: %d ppm\n",
+  Serial.printf("T=%.1f°C, R=%.1f%%, HI=%.1f°C, CO2=%dppm\n",
                 dht_data.temperature,
                 dht_data.humidity,
                 dht_data.heatIndex,
@@ -37,8 +41,8 @@ void loop()
 
 #if ENABLE_MQTT == true
   mqtt::publishTemperature("sensors/home/livingroom/temperature", dht_data.temperature);
-  mqtt::publishTemperature("sensors/home/livingroom/humidity", dht_data.humidity);
-  mqtt::publishTemperature("sensors/home/livingroom/co2", co2);
+  mqtt::publishHumidity("sensors/home/livingroom/humidity", dht_data.humidity);
+  mqtt::publishCO2("sensors/home/livingroom/co2", co2);
 #endif
 
 #if ENABLE_DISPLAY == true
