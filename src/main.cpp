@@ -27,10 +27,15 @@ void loop()
   auto dht_data = dht_sensor::getData();
   uint32_t co2 = co2_sensor::readCo2();
 
-  Serial.printf("Temp: %.1f °C , Humidity: %.1f %%, HeatIndex: %.1f °C", dht_data.temperature, dht_data.humidity, dht_data.heatIndex);
-  Serial.printf(" -- CO2: %d", co2);
-  Serial.println();
+#if ENABLE_SERIAL_LOGGING == true
+  Serial.printf("Temp: %.1f °C, Humidity: %.1f %%, HeatIndex: %.1f °C -- CO2: %d ppm\n",
+                dht_data.temperature,
+                dht_data.humidity,
+                dht_data.heatIndex,
+                co2);
+#endif
 
+#if ENABLE_DISPLAY == true
   display::display.clearDisplay();
   display::display.setCursor(0, 0);
   display::display.cp437(true);
@@ -38,6 +43,6 @@ void loop()
   display::display.printf("Humidity: %.1f %%\n", dht_data.humidity);
   display::display.printf("CO2: %d ppm", co2);
   display::display.display();
-
+#endif
   // Serial.printf("btn1 = %d | btn2 = %d \n", button::isBtn1Pressed(), button::isBtn2Pressed());
 }
