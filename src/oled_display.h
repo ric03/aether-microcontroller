@@ -8,9 +8,10 @@
 #include "bitmap_ms_paint.h"
 #include "bitmap_dog_bone.h"
 
-#define SCREEN_WIDTH 128 // OLED display width, in pixels
-#define SCREEN_HEIGHT 32 // OLED display height, in pixels
-#define OLED_RESET -1    // Reset pin # (or -1 if sharing Arduino reset pin)
+#define SCREEN_WIDTH 128         // OLED display width, in pixels
+#define SCREEN_HEIGHT 32         // OLED display height, in pixels
+#define OLED_RESET -1            // Reset pin # (or -1 if sharing Arduino reset pin)
+#define TEXT_COLOR SSD1306_WHITE // Draw white text (default is black), because the display is black
 
 namespace display
 {
@@ -28,6 +29,7 @@ namespace display
                 ; // Don't proceed, loop forever
         }
 
+        display.setTextColor(TEXT_COLOR);
         display.clearDisplay();
         display.display();
     }
@@ -52,9 +54,8 @@ namespace display
 
     void println(const String &s)
     {
-        display.setTextSize(1);              // Normal 1:1 pixel scale
-        display.setTextColor(SSD1306_WHITE); // Draw white text
-        display.setCursor(0, 0);             // Start at top-left corner
+        display.setTextSize(1);  // Normal 1:1 pixel scale
+        display.setCursor(0, 0); // Start at top-left corner
         display.println(s);
         display.display();
     }
