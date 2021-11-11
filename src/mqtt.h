@@ -12,7 +12,8 @@ extern "C"
 }
 #include "AsyncMqttClient.h"
 
-#include "mqtt_config.h"
+#include "mqtt_message_generator.h"
+#include "config.h"
 
 namespace mqtt
 {
@@ -152,40 +153,20 @@ namespace mqtt
 
     void publishTemperature(const char *topic, float value)
     {
-        auto payload = generateTemperaturePayload(value).c_str();
-        mqttClient.publish(topic, 0, true, payload);
+        auto payload = mqtt_message_generator::generateTemperaturePayload(value);
+        mqttClient.publish(topic, 0, true, payload.c_str());
     }
 
     void publishHumidity(const char *topic, float value)
     {
-        auto payload = generateHumidityPayload(value).c_str();
-        mqttClient.publish(topic, 0, true, payload);
+        auto payload = mqtt_message_generator::generateHumidityPayload(value);
+        mqttClient.publish(topic, 0, true, payload.c_str());
     }
 
     void publishCO2(const char *topic, int value)
     {
-        auto payload = generateCo2Payload(value).c_str();
-        mqttClient.publish(topic, 0, true, payload);
-    }
-
-    String generateTemperaturePayload(float value)
-    {
-        return generateJson("temperature", String(value, 1), "˚C");
-    }
-
-    String generateHumidityPayload(float value)
-    {
-        return generateJson("humidity", String(value, 1), "%");
-    }
-
-    String generateCo2Payload(uint32_t value)
-    {
-        return generateJson("co2", String(value), "ppm");
-    }
-
-    String generateJson(String measurement, String value, String unit)
-    {
-        return "{\"measurement\":\"" + measurement + "\",\"value\":" + value + ", \"unit\": " + unit + "}";
+        auto payload = mqtt_message_generator::generateCo2Payload(value);
+        mqttClient.publish(topic, 0, true, payload.c_str());
     }
 
 } // namespace mqtt
