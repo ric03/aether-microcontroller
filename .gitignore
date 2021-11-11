@@ -8,7 +8,7 @@
 .vscode/ipch
 
 # Secrets
-src/mqtt_config.h
+src/config.h
 container/config.env
 container/config/mosquitto.passwd
 container/config/mosquitto.passwd.raw
