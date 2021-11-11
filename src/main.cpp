@@ -26,7 +26,7 @@ void setup()
 
 void loop()
 {
-  delay(2000);
+  delay(30000);
 
   auto dht_data = dht_sensor::getData();
   uint32_t co2 = co2_sensor::readCo2();
