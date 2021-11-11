@@ -14,6 +14,12 @@ This project measures the air quality with a microcontroller, the data is sent v
 1. `cp src/config.template.h src/config.h`
 2. Set the correct variables in `src/config.h`
 3. Compile and upload the code to the microcontroller via PlatformIO
+    ```shell
+    # Build
+    $ platformio run --environment lolin_d32
+    # Build + Upload + Monitor
+    $ platformio run --target upload --target monitor --environment lolin_d32
+    ```
 
 
 # Hardware Components
