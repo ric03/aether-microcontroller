@@ -17,6 +17,7 @@ void setup()
   co2_sensor::setup();
   dht_sensor::setup();
   display::setup();
+  wifi::setup();
   mqtt::setup();
 
 #if ENABLE_SERIAL_LOGGING == true
