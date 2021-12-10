@@ -1,8 +1,10 @@
 # Project Aether Microcontroller
 
-Measure the air quality with an microcontroller.
+Measure the air quality with a microcontroller.
 
 This project measures the air quality with a microcontroller, the data is sent via MQTT to a Mosquitto Broker.
+
+Also see https://github.com/ric03/aether-deployment
 
 # Requirements
 
